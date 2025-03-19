@@ -55,7 +55,13 @@ The app will be available at **http://localhost:3000** and **https://megablogbya
 ✔️ Clean and maintainable project structure  
 
 ## 📸 Screenshots
-(Add some screenshots of your app here)
+### 🏠 Home Page
+![Home Page](<img width="1054" alt="Screenshot 2025-03-19 092334a" src="https://github.com/user-attachments/assets/07b0a2b9-2533-456f-acc4-fec837188dca" />
+)
+
+### 📖 User Account View
+![Post View](![Screenshot 2025-03-19 092712](https://github.com/user-attachments/assets/bbdb23ea-19f6-4a88-a28e-bddd81baac22)
+)
 
 ## 🛠️ Future Improvements
 - Implement a sms or otp base for authentication 
