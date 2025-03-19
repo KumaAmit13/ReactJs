@@ -8,6 +8,8 @@ MegaBlog is a modern, responsive blogging platform built using **React.js** and 
 - **State Management:** Redux Toolkit
 - **Styling:** Tailwind CSS
 - **Routing:** React Router
+- **Real text editor** TinyMCE
+- **Backend or Database** Appwrite
 
 ## 📂 Project Structure
 ```
