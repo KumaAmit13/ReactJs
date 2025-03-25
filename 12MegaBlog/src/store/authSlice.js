@@ -1,35 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState={
-    status:false,
-    userData:null,
-    profilePhoto:"hii",
-    likedpost:[],
+const initialState = {
+    status: false,
+    userData: null,
+    profilePhoto: "hii",
+    likedpost: [],
 }
-const authSlice=createSlice({
+const authSlice = createSlice({
     name: "auth",
     initialState,
-    reducers:{
-        login:(state, action)=>{
-            state.status=true;
-            state.userData=action.payload.userData
+    reducers: {
+        login: (state, action) => {
+            state.status = true;
+            state.userData = action.payload.userData
         },
-        logout:(state)=>{
-            state.status=false;
-            state.userData=null;
+        logout: (state) => {
+            state.status = false;
+            state.userData = null;
         },
-        userPhoto:(state,action)=>{
+        userPhoto: (state, action) => {
             console.log("Updating Redux Profile Photo:", action.payload);
-            state.profilePhoto=action.payload;
+            state.profilePhoto = action.payload;
         },
-        userLike:(state,action)=>{
-            state.likedpost=likedpost.push(action.payload);
+        userLike: (state, action) => {
+            console.log("userlike slice workig")
+            state.likedpost.push(action.payload);
         }
 
     }
 });
 
 
-export const{login,logout,userPhoto}=authSlice.actions;
+export const { login, logout, userPhoto, userLike } = authSlice.actions;
 
 export default authSlice.reducer;

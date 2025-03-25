@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react'
 import service, { Service } from '../appwrite/config'
 import { data, Link } from 'react-router-dom'
 import { Heart } from "lucide-react"
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ID } from 'appwrite';
 import authService from '../appwrite/auto';
+import { userLike } from '../store/authSlice';
 
 function PostCard({ $id, title, content, featuredImages, $createdAt })//all parameters {$id,title, featuredImage} connected appwriteService appwriteService id ver written as allways $id
 {
 
     const [postIds, setPostIds] = useState([]);
-    const [postId, setPostId] = useState([]);
+    const dispatch=useDispatch();
     const [userId, setUserId] = useState();
     const [continue1, setContinue] = useState(true);
     const [loginUserId, setLoginUserId] = useState();
@@ -136,6 +137,7 @@ function PostCard({ $id, title, content, featuredImages, $createdAt })//all para
                 })
 
             })
+            dispatch((userLike([$id,currentLikedCount])));
 
             // serProfilephotot();
 
