@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState={
     status:false,
     userData:null,
-    profilePhoto:"hii"
+    profilePhoto:"hii",
+    likedpost:[],
 }
 const authSlice=createSlice({
     name: "auth",
@@ -20,6 +21,9 @@ const authSlice=createSlice({
         userPhoto:(state,action)=>{
             console.log("Updating Redux Profile Photo:", action.payload);
             state.profilePhoto=action.payload;
+        },
+        userLike:(state,action)=>{
+            state.likedpost=likedpost.push(action.payload);
         }
 
     }

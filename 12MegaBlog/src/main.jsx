@@ -17,6 +17,8 @@ import Post from "./pages/Post";
 import AllPosts from "./pages/AllPosts";
 import Dashboard from './components/Dashboard.jsx'
 import EditProfilePhoto from './pages/EditProfilePhoto.jsx'
+import HelpSupport from './pages/HelpandSupport.jsx'
+import PrivacyPolicy from './pages/PrivacyAndPolicy.jsx'
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,22 @@ const router = createBrowserRouter([
         element: (
           <AuthLayout authentication={false}>
             <Signup />
+          </AuthLayout>
+        )
+      },
+      {
+        path: "/help",
+        element: (
+          <AuthLayout>
+            <HelpSupport />
+          </AuthLayout>
+        )
+      },
+      {
+        path: "/policy",
+        element: (
+          <AuthLayout>
+            <PrivacyPolicy/>
           </AuthLayout>
         )
       },

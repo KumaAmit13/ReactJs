@@ -114,6 +114,16 @@ export class AuthService {
 
       }
    }
+
+   async likeCountIncrement(){
+      try {
+      } catch (error) {
+         
+      }
+   }
+   async likeCountDecrement(){
+
+   }
   
   
 

@@ -25,11 +25,11 @@ export class Service {
                     featuredImages,
                     status,
                     userId,
-                    
+
                 }
             )
         } catch (error) {
-            console.log("name : ", title,": Slug : ", slug," : content :  ", content," : featuredImages : " ,featuredImages," : sataus : " ,status," : userId : ", userId)
+            console.log("name : ", title, ": Slug : ", slug, " : content :  ", content, " : featuredImages : ", featuredImages, " : sataus : ", status, " : userId : ", userId)
             console.log("Appwrite Service :: createPost :: error ", error);
             throw new Error("Failed to create post");
 
@@ -38,7 +38,7 @@ export class Service {
     }
 
 
-    async updateProfilePhoto(slug, profilePhoto ) {
+    async updateProfilePhoto(slug, profilePhoto) {
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -76,7 +76,7 @@ export class Service {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteProfilCOLLECTIONId,
-                
+
             )
 
         } catch (error) {
@@ -111,6 +111,95 @@ export class Service {
 
         }
     }
+    updateLikeCount = async (slug, likes) => {//slug means post/document id
+        try {
+
+            // Increment like count
+            // const updatedLikes = isliked ? currentLikes - 1 : currentLikes + 1;
+
+            console.log("config like is working")
+            // Update the document
+            await this.databases.updateDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                slug,
+                {
+                    like: likes,
+                }
+            );
+
+            console.log("Like count updated successfully!");
+        } catch (error) {
+            console.error("Error updating like count:", error);
+        }
+    };
+
+    async updatePostLikedUsers(slug, userId) {
+        try {
+            const document = await this.databases.getDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                 slug);    
+            console.log("Fetched document:", document);
+            console.log("is array document:", Array.isArray(document.LikedUser));
+    
+            let likedUsersArray = [];
+    
+            // Ensure LikedUser is an array
+            if (Array.isArray(document.LikedUser)) {
+                likedUsersArray = document.LikedUser;
+            }
+             else if (document.LikedUser && typeof document.LikedUser === "object") {
+                likedUsersArray = Object.values(document.LikedUser); // Convert object to array
+                console.log("is likeduser document:", Array.isArray(likedUsersArray));
+
+            }
+    
+            // Prevent duplicate likes
+            if (!likedUsersArray.includes(userId)) {
+                likedUsersArray.push(userId);
+            }
+            else{
+                return false
+                
+            }
+    
+            // Update the document
+            await this.databases.updateDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                slug,
+                {
+                    LikedUser: likedUsersArray,
+                }
+            );
+    
+            console.log("Updated document:", likedUsersArray);
+            return likedUsersArray;
+    
+        } catch (error) {
+            console.log("Error while updating PostLikedUsers:", error);
+            return false;
+        }
+    }
+
+    async updatePostUnlikedUser(slug,userIds){
+        try {
+            await this.databases.updateDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                slug,
+                {
+                    LikedUser: userIds,
+                }
+            );
+            console.log("updatePostUnlikedUser with new user ids array",userIds);
+        } catch (error) {
+            console.log("error while user dislike method updatePostUnlikedUser",error)
+        }
+    }
+    
+
 
     async deletePost(slug) {
         try {
@@ -216,6 +305,8 @@ export class Service {
             fileId,
         )
     }
+
+    
 
 }
 
