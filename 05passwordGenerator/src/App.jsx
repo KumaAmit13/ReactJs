@@ -52,7 +52,7 @@ function App() {
           max={28}
           min={8}
           value={length}
-          o ={(e)=>{setLength(e.target.value)}}/>
+          onChange ={(e)=>{setLength(e.target.value)}}/>
           <label htmlFor="" className='ml-3'>length {length}</label>
           </div>
           <div>
