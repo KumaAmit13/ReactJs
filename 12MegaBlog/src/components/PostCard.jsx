@@ -225,7 +225,7 @@ function PostCard({ $id, title, content, featuredImages, $createdAt })//all para
   const shareData = {
     title: title,
     text: "Check My New Post",
-    url: `${window.location.href}/post/${$id}`,  // ✅ now it's the real URL
+    url: `${window.location.href}post/${$id}`,  // ✅ now it's the real URL
   };
 
   if (navigator.share) {
