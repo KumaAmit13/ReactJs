@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useTransition } from 'react'
 import service, { Service } from '../appwrite/config'
 import { data, Link } from 'react-router-dom'
 import { Heart, Share2 } from "lucide-react"
@@ -10,6 +10,7 @@ function PostCard({ $id, title, content, featuredImages, $createdAt })//all para
 {
 
     const [postIds, setPostIds] = useState([]);
+    const[pending,startTransition]=useTransition()
     const dispatch = useDispatch();
     const [userId, setUserId] = useState();
     const [continue1, setContinue] = useState(true);
@@ -164,16 +165,9 @@ function PostCard({ $id, title, content, featuredImages, $createdAt })//all para
 
     //like handle
 
-    const debounce=(fn, delay)=> {
-    let timer;
-  return function (...args) {
-    clearTimeout(timer);         // clear previous timer
-    timer = setTimeout(() => {
-      fn.apply(this, args);      // run function after delay
-    }, delay);
-  };
-}
-    const likeHandler = async () => {
+
+    const likeHandler =()=>{
+        startTransition(async () => {
         // console.log("likehandler onclick")
         // console.log("id of post ", $id);
 
@@ -212,9 +206,13 @@ function PostCard({ $id, title, content, featuredImages, $createdAt })//all para
         setLiked(!liked);
 
 
-    }
+    })
 
-    const debounceLikeHandler=debounce(likeHandler,550)
+    } 
+
+
+
+    
 
 
 
@@ -298,16 +296,20 @@ function PostCard({ $id, title, content, featuredImages, $createdAt })//all para
                     </div>
                 </Link>
                 <div
-                    onClick={() => debounceLikeHandler()}
+                    // onClick={() => likeHandler()}
                     onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
+                    
                     className="flex  flex-row items-center  space-x-2 px-2 rounded-lg justify-between p-1 pl-3 pr-3  cursor-pointer  transition "
                 >
 
                     <span className='flex gap-0.5'>
 
                         <Heart
+                         onClick={() => !pending && likeHandler()}
+
                             // size={hovered ? 30 : 24}
+                    
 
                             className={`${liked ? "text-red-500 fill-red-500" : "text-gray-500 "} hover:scale-110 `}
                         />
