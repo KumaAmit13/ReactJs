@@ -51,7 +51,7 @@ function EditProfilePhoto() {
                     <Input
                         label="Featured Image :"
                         type="file"
-                        className="mb-4"
+                        className="mb-4 border-1 rounded-full "
                         accept="image/png, image/jpg, image/jpeg, image/gif"
                         {...register("photo", { required: true })}
                     />

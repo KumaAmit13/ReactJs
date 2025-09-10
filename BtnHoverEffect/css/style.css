@@ -1,0 +1,72 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #3498db;
+  --font-size: 16px;
+  --duration: 2.5s;
+  --delay: 0s;
+  --timing-function: ease-in-out;
+  --iteration-count: infinite;
+  --direction: normal;
+  --fill-mode: both;
+  --text-indent:73%;
+  --color1:rgb(90, 253, 201);
+}
+
+body {
+  background-color: black;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+  height: 100vh;
+}
+
+button {
+  width: 26vw;
+  height: 10vh;
+  font-size: larger;
+  font-family: 'Gill Sans', sans-serif;
+  background: linear-gradient(90deg, aqua, bisque, blueviolet);
+  background-size: 300% 100%; /* bigger for sliding */
+  background-position: 0% 50%;
+  border-radius: 5px;
+  border: none;
+  color: rgb(249, 250, 249);
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  border: 1px solid transparent;
+
+
+}
+#btn1:hover{
+  /* border: 1px solid ; */
+  animation: btnAnimation var(--duration) var(--timing-function) var(--delay) var(--iteration-count) var(--direction) var(--fill-mode);
+}
+
+#btn2:hover{
+  /* border: 1px solid; */
+    --text-indent:-73%;
+    --color1:red;
+
+  /* border: 1px solid ; */
+  animation: btnAnimation var(--duration) var(--timing-function) var(--delay) var(--iteration-count) var(--direction) var(--fill-mode);
+}
+
+@keyframes btnAnimation {
+  0%   { background-position: 100% 50%;box-shadow: -1px 2px 10px rgba(41, 165, 241, 0.5) ; border-left-color: aqua;text-shadow: 10px 5px 10px gray;color: aqua; text-decoration: double; }
+  25%  {border-top-color: bisque;box-shadow: -2px 5px 10px var(--color1) ; text-shadow: 10px 5px 10px var(--color1);font-size: 0.98rem; text-decoration: double; text-indent: var(--text-indent);color: var(--color1);}
+  50%  {border-right-color: blueviolet;box-shadow: 0px 0px 10px rgba(41, 165, 241, 0.5) ;border-radius: 5px;text-shadow: 10px 5px 10px bisque;font-size: 0.95rem;color: blueviolet; }
+  100% { background-position: 0% 50%;box-shadow: -5px 10px 10px rgba(41, 165, 241, 0.5) ;border-bottom-color: aqua;text-shadow: 10px 5px 10px blueviolet;font-size: 0.93rem;  }
+}

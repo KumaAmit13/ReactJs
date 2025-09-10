@@ -14,7 +14,7 @@ function Home() {
     const status = useSelector((state) => (state.auth.status))
     const dispatch=useDispatch();
 
-    console.log("math")
+    // console.log("math")
    
     useEffect(() => {
         if (status) {
@@ -33,10 +33,10 @@ function Home() {
                     dispatch(userPhoto(data.profilePhoto));
                     localStorage.setItem("profilePhoto",data.profilePhoto);
                     // console.log("local storege",localStorage.getItem("profilePhoto"))
-                    console.log("ii am working hard", data.profilePhoto)
+                    // console.log("ii am working hard", data.profilePhoto)
                     //getting null/old value because React's state updates asynchronously,
                     // setProfilePhoto(data.profilePhoto) updates the state, 
-                    console.log("setProfilePhoto ",profilePhoto1)//but React doesn’t apply the change immediately. runs before the state has been updated, so it still logs the old value instead of the new one.
+                    // console.log("setProfilePhoto ",profilePhoto1)//but React doesn’t apply the change immediately. runs before the state has been updated, so it still logs the old value instead of the new one.
                 }
             });
         }
@@ -80,7 +80,7 @@ function Home() {
     }
     if (!status) {
         return (
-            <div className='w-full py-8 mt-4 text-center'>
+            <div className='w-full py-8 mt-4 text-center '>
                 <Container>
                     <h1 className="text-2xl font-bold hover:text-gray-500">
                         login to see the Post

@@ -16,6 +16,7 @@ function Signup() {
 
     const create = async (data) => {
         setError("");
+        console.log("data", data)
         try {
             const userData = await authService.createAccount(data);
             if (userData) {
@@ -52,12 +53,15 @@ function Signup() {
                         <Input
                             label="Full Name : "
                             placeholder="Enter your Full name"
+                            required
                             {...register("name", {
-                                required: true
+                                required: "Name can't be empty",
+                                validate: (value) => value.trim().length > 0 || "Name cannot be only spaces"
                             })}
                         />
-                          {errors.name?.type === "required" && (<p>Name can't be Empty</p>)}
-
+                        {errors.name && (
+                            <p className='text-black font-mono p-0'>{errors.name.message}</p>
+                        )}
                         <Input
                             label="Email: "
                             placeholder="Enter your email"
@@ -70,6 +74,7 @@ function Signup() {
                                 }
                             })}
                         />
+                        {errors.email?.type === "required" && (<p className='text-black font-mono '>Email can't be Empty</p>)}
                         <Input
                             label="Password : "
                             type="password"
@@ -79,11 +84,11 @@ function Signup() {
                                 minLength: 6,
                             })}
                         />
-                        {errors.password?.type === "minLength" && (<p>Password must be Greater then 6</p>)}
-                        {errors.password?.type === "required" && (<p>Password can't be Empty</p>)}
+                        {errors.password?.type === "minLength" && (<p className='text-black font-mono p-0'>Password must be Greater then 6</p>)}
+                        {errors.password?.type === "required" && (<p className='text-black font-mono p-0'>Password can't be Empty</p>)}
                         <Button
                             type="submit"
-                            className="w-full"
+                            className="w-full text-nowrap"
                         >Create Account</Button>
                     </div>
 

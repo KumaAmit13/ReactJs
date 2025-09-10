@@ -14,7 +14,7 @@ export default function Dashboard() {
 
   const authStatus = useSelector((state) => state.auth.status);
   const profilePhoto1=localStorage.getItem("profilePhoto");
-  console.log("profile status",authStatus)
+  // console.log("profile status",authStatus)
   
 
 
@@ -24,14 +24,14 @@ export default function Dashboard() {
     service.getPosts().then((data)=>{
       console.log("all users",data)
       data.documents.forEach((e)=>{
-        console.log("user id",e.userId)
+        // console.log("user id",e.userId)
       })
     })
 
     service.getProfilePhotos().then((data)=>{
-      console.log("all profile data",data)
+      // console.log("all profile data",data)
       data.documents.forEach((e)=>{
-        console.log("user profile photot id",e.$id)
+        // console.log("user profile photot id",e.$id)
       })
     })
   },[]);
@@ -46,7 +46,7 @@ export default function Dashboard() {
         try {
           const userData = await authService.getCurrentUser();
           if (userData) {
-            console.log(userData);
+            // console.log(userData);
             setName(userData.name || "Not Set");
             setEmail(userData.email || "Not Set");
             setPhone(userData.phone || "Not Set");
@@ -68,7 +68,7 @@ export default function Dashboard() {
       <div className="w-96 p-6 bg-gray-300 rounded-2xl shadow-lg">
         <div className="flex flex-col items-center">
           <div className="relative w-24 h-24 rounded-full bg-gray-300 flex items-center justify-center">
-            <img
+            <img  loading="lazy"
               src={
                 profilePhoto1
                   ? service.getPhotoPreview(profilePhoto1)

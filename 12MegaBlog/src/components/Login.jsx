@@ -12,16 +12,17 @@ function Login() {
     const {register, handleSubmit,formState:{errors}}=useForm();
     const[error,setError]=useState("");
     const[isError,setIsError]=useState(false);
-    console.log("login ", Math.random())
+    // console.log("login ", Math.random())
     const login= async(data)=>{
         setError(null);//clean errors
-        console.log("hii ikiki")
+        // console.log("hii ikiki")
         try {
             const session=await authService.login(data);
-            console.log("ikiki kasinas ns")
+            // console.log("ikiki kasinas ns")
 
             if (session) {
                 const userData=await authService.getCurrentUser();
+                console.log("jhvbdjbs",userData);
                 if(userData) dispatch(authLogin(userData));
                 navigate("/");
             }
@@ -66,6 +67,8 @@ function Login() {
                         }
                     })}
                     />
+                    {errors.email?.type === "required" && (<p className='text-black '>Email can't be Empty</p>)}
+
                     <Input
                     label="Password: "
                     type="password"
@@ -80,7 +83,7 @@ function Login() {
 
                     <Button
                     type="submit"
-                    className="w-full"
+                    className="w-full text-nowrap"
                     >Sign in</Button>
                 </div>
             </form>

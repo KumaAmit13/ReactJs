@@ -10,6 +10,7 @@ function AddTodo() {
         e.preventDefault()
         dispatch(addTodo(input))
         setInput("")
+        // setInput((prev)=>prev+1)
     }
     return (
         <form onSubmit={addTodoHandler} className="space-x-3 mt-12">

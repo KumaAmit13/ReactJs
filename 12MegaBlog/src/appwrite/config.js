@@ -280,7 +280,7 @@ export class Service {
         }
     }
     getPhotoPreview(fileId) {
-        return this.bucket.getFilePreview(
+        return this.bucket.getFileView(
             conf.appwriteProfilBucketId,
             fileId,
         )
@@ -300,11 +300,20 @@ export class Service {
     }
 
     getFilePreview(fileId) {
-        return this.bucket.getFilePreview(
+        return this.bucket.getFileView(
             conf.appwritebucketId,
             fileId,
         )
     }
+
+    // Service method
+   getFileView(fileId) {
+    return this.bucket.getFileView(
+        conf.appwritebucketId,
+        fileId
+    );
+ }
+
 
     
 

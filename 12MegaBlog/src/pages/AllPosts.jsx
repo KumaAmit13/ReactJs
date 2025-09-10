@@ -8,7 +8,7 @@ function AllPosts() {
     useEffect(() => {
         appwriteService.getPosts([]).then((posts) => {
             if (posts) {
-                setPost(posts.documents)
+                setPost(posts.documents.reverse())
                 console.log("alii post ", posts);
             } 
         }).catch()

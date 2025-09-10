@@ -54,6 +54,7 @@ button {
 }
 button:hover {
   border-color: #646cff;
+  transform: scale(1.08);
 }
 button:focus,
 button:focus-visible {

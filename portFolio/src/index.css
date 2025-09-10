@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+
+
+
+
+
+
+
+
+
+:root {
+  --primary-color: #3498db;
+  --font-size: 16px;
+  --duration: 3s;
+  --delay: 0s;
+  --timing-function: ease-in-out;
+  --iteration-count: infinite;
+  --direction: alternate;
+  --fill-mode: forwards;
+  --text-indent: 73%;
+  --color1: rgb(90, 253, 201);
+}
+
+
+
+button {
+
+  /* font-size: larger; */
+  /* font-family: 'Gill Sans', sans-serif; */
+  background-size: 300% 100%;
+  /* bigger for sliding */
+  background-position: 0% 50%;
+  border-radius: 5px;
+  border: none;
+  color: rgb(249, 250, 249);
+   transition: font-size 0.3s ease
+}
+
+
+
+@keyframes btnAnimation {
+  0% {
+    background-position: 100% 50%;
+    box-shadow: -1px 2px 10px rgba(140, 77, 207, 0.5);
+    border-left-color: aqua;
+    text-shadow: 10px 5px 10px gray;
+    color: rgba(140, 77, 207, 0.5);
+    text-decoration: double;
+  }
+
+  25% {
+    border-top-color: bisque;
+    box-shadow: -2px 5px 10px rgba(140, 77, 207, 0.5);
+    text-shadow: 10px 5px 10px var(--color1);
+    /* font-size: 1.1rem; */
+    /* text-decoration: double; */
+    /* text-indent: var(--text-indent); */
+    color: var(--color1);
+  }
+
+  50% {
+    border-right-color: blueviolet;
+    box-shadow: 0px 0px 10px rgba(140, 77, 207, 0.5);
+    border-radius: 5px;
+    text-shadow: 10px 5px 10px bisque;
+    /* font-size: 1.1rem; */
+    color: rgb(217, 188, 245);
+  }
+
+  100% {
+    background-position: 0% 50%;
+    box-shadow: -5px 10px 10px rgba(140, 77, 207, 0.5);
+    border-bottom-color: aqua;
+    text-shadow: 10px 5px 10px blueviolet;
+    /* font-size: 1.1rem; */
+    color: rgba(246, 244, 248, 0.5);
+
+  }
+}
+
+button:hover {
+  /* border: 1px solid ; */
+    background: linear-gradient(90deg, #8C4DCF, blueviolet, bisque);
+
+  font-size: 1.1rem;
+  cursor: pointer;
+  animation: btnAnimation var(--duration) var(--timing-function) var(--delay) var(--iteration-count) var(--direction) var(--fill-mode);
+}
+
+/* :root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */
